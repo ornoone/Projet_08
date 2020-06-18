@@ -22,6 +22,15 @@ Le site fonctionne avec une base de donnée postgreSQL. Heroku met à dispositio
 
 ## Installation et lancement du site
 
+### docker
+
+build l'image
+```bash
+DB_PWD='yourspecialpassword' docker-compose up -d --build
+``` 
+
+### heroku 
+
 Se connecter à Heroku.
 ```bash
 heroku login

@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=purbeurre
+      - POSTGRES_USER=purbeurre
+      - POSTGRES_PASSWORD=${DB_PWD}
+#  backend_migrate:
+#    build: .
+#    restart: on-failure
+#    healthcheck:
+#      disable: true
+#    environment:
+#      - DB_PASSWORD=${DB_PWD}
+#      - DB_HOST=db
+#    command: bash -c "python /code/manage.py migrate --noinput && python /code/manage.py db_update"
+#    depends_on:
+#      - db
+
+  web:
+    build: .
+    depends_on:
+      - db
+      - backend_migrate
+    environment:
+      - DB_PASSWORD=${DB_PWD}
+      - DB_HOST=db
+    ports:
+      - 80:80
+

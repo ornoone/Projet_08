@@ -1,10 +1,11 @@
 server {
 
-        listen 80; server_name 37.187.116.21;
-        root /home/manu/Projet_08/;
+        listen 80;
+        server_name _;
+        root /code/;
 
         location /static {
-                alias /home/manu/Projet_08/staticfiles/;
+                alias /code/staticfiles/;
         }
 
         location /media {
